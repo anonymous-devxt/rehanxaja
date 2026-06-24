@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raihan Modz</title>
+
+    <style>
+        /* CSS Bawaan */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        body { background-color: rgba(0, 0, 0, 0.5); color: #f8fafc; font-family: 'Segoe UI', sans-serif; padding: 20px; }
+        .header { margin-bottom: 20px; text-align: center; }
+        .header h1 { font-size: 24px; color: #38bdf8; margin-bottom: 10px; }
+        .grid-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        .menu-card { background: transparent; padding: 15px; border-radius: 15px; text-align: center; border: none; cursor: pointer; transition: 0.3s; }
+        .menu-card:active { transform: scale(0.95); }
+        .icon { font-size: 20px; margin-bottom: 5px; }
+        .menu-card h3 { font-size: 10px; color: #e2e8f0; }
+        .a-style { text-decoration: none; color: inherit; display: block; }
+        .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:1000; }
+        .box-modal { width:95%; background:#1e293b; padding:20px; border-radius:20px; text-align:center; }
+        .btn-calc { padding:10px; margin:2px; background:#334155; border:none; color:white; border-radius:5px; cursor:pointer; width: 22%; }
+        .btn-link { padding:12px; margin:5px; background:#38bdf8; border:none; color:#0f172a; font-weight:bold; border-radius:8px; cursor:pointer; width: 90%; display: block; margin: 10px auto; }
+        #display { width:100%; height:45px; margin-bottom:10px; background:#0b0f19; color:white; border:1px solid #334155; text-align:right; padding:10px; border-radius:5px; font-size:18px; }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="file:///android_asset/shun_anime_music_musicaldown.com_1782155129.mp4" type="video/mp4">
+    </video>
+
+    <div class="header">
+        <h1>RAIHAN MODZ</h1>
+        <form action="https://www.google.com/search" method="GET" target="_blank">
+            <input type="text" name="q" placeholder="Cari di Google..." style="width: 100%; padding: 12px; border-radius: 20px; border: 1px solid #334155; background: rgba(30, 41, 59, 0.8); color: white; text-align: center; outline: none;">
+        </form>
+    </div>
+
+    <div class="grid-menu">
+        <a href="https://quran.com/id" target="_blank" class="a-style"><div class="menu-card"><div class="icon">📖</div><h3>Al-Qur'an</h3></div></a>
+        <a href="https://www.webtoons.com/id/" target="_blank" class="a-style"><div class="menu-card"><div class="icon">📕</div><h3>Komik</h3></div></a>
+        <a href="https://rumaysho.com/" target="_blank" class="a-style"><div class="menu-card"><div class="icon">📚</div><h3>Perpustakaan</h3></div></a>
+        <a href="https://kiosgamer.co.id/" target="_blank" class="a-style"><div class="menu-card"><div class="icon">💎</div><h3>Top Up FF</h3></div></a>
+        <a href="https://saweria.co/" target="_blank" class="a-style"><div class="menu-card"><div class="icon">🎁</div><h3>Donasi</h3></div></a>
+        <a href="https://m.youtube.com" target="_blank" class="a-style"><div class="menu-card"><div class="icon">🎬</div><h3>YouTube</h3></div></a>
+        <a href="https://www.youtube.com/results?search_query=film+horor+full+movie" target="_blank" class="a-style"><div class="menu-card"><div class="icon">👻</div><h3>Film Horor</h3></div></a>
+        <a href="https://poki.com/" target="_blank" class="a-style"><div class="menu-card"><div class="icon">🎮</div><h3>Poki Games</h3></div></a>
+        <a href="https://www.crazygames.com/" target="_blank" class="a-style"><div class="menu-card"><div class="icon">🎲</div><h3>Crazy Games</h3></div></a>
+        <a href="https://www.iq.com/" target="_blank" class="a-style"><div class="menu-card"><div class="icon">⛩️</div><h3>DERAMA CINA</h3></div></a>
+        <a href="https://www.vidio.com/categories/anime" target="_blank" class="a-style"><div class="menu-card"><div class="icon">🎥</div><h3>ANIME</h3></div></a>
+        
+        <div class="menu-card" onclick="document.getElementById('downModal').style.display='flex'"><div class="icon">⬇️</div><h3>Download Video</h3></div>
+        
+        <div class="menu-card" onclick="document.getElementById('calcModal').style.display='flex'"><div class="icon">🧮</div><h3>Kalkulator</h3></div>
+        <div class="menu-card" onclick="checkPassword()"><div class="icon">🦆</div><h3>DuckDuckGo</h3></div>
+    </div>
+
+    <div id="downModal" class="modal"><div class="box-modal">
+        <h3 style="color:white; margin-bottom:15px;">Pilih Downloader</h3>
+        <button class="btn-link" onclick="window.open('https://snaptik.app/', '_blank')">Download TikTok (No Watermark)</button>
+        <button class="btn-link" onclick="window.open('https://id.y2mate.is/', '_blank')">Download Video MP4/YouTube</button>
+        <button class="btn-calc" style="width:90%" onclick="document.getElementById('downModal').style.display='none'">Tutup</button>
+    </div></div>
+
+    <div id="calcModal" class="modal"><div class="box-modal">
+        <input type="text" id="display" readonly>
+        <div>
+            <button class="btn-calc" onclick="append('7')">7</button><button class="btn-calc" onclick="append('8')">8</button><button class="btn-calc" onclick="append('9')">9</button><button class="btn-calc" onclick="append('/')">/</button>
+            <button class="btn-calc" onclick="append('4')">4</button><button class="btn-calc" onclick="append('5')">5</button><button class="btn-calc" onclick="append('6')">6</button><button class="btn-calc" onclick="append('*')">x</button>
+            <button class="btn-calc" onclick="append('1')">1</button><button class="btn-calc" onclick="append('2')">2</button><button class="btn-calc" onclick="append('3')">3</button><button class="btn-calc" onclick="append('-')">-</button>
+            <button class="btn-calc" onclick="clearD()">C</button><button class="btn-calc" onclick="append('0')">0</button><button class="btn-calc" onclick="append('+')">+</button><button class="btn-calc" onclick="calc()">=</button>
+        </div>
+        <button class="btn-calc" style="width:95%" onclick="document.getElementById('calcModal').style.display='none'">Tutup</button>
+    </div></div>
+
+    <script>
+        function append(v) { document.getElementById('display').value += v; }
+        function clearD() { document.getElementById('display').value = ''; }
+        function calc() { try { document.getElementById('display').value = eval(document.getElementById('display').value); } catch { document.getElementById('display').value = 'Error'; } }
+        function checkPassword() { let pass = prompt("Masukkan Sandi:"); if (pass == "1") { window.open("https://duckduckgo.com", "_blank"); } else { alert("Sandi Salah!"); } }
+    </script>
+</body>
+</html>
